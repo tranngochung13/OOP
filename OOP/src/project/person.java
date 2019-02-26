@@ -11,6 +11,10 @@ import java.util.Scanner;
 public abstract class person {
     Scanner sc = new Scanner(System.in);
     Scanner sc1 = new Scanner(System.in);
+    Scanner sc2 = new Scanner(System.in);
+    Scanner sc3 = new Scanner(System.in);
+    Scanner sc4 = new Scanner(System.in);
+    Scanner sc5 = new Scanner(System.in);
     ArrayList<Integer> id = new ArrayList<>();
     ArrayList<String> name = new ArrayList<>();
     ArrayList<String> gender = new ArrayList<>();

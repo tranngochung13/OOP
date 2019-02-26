@@ -10,7 +10,7 @@ import java.text.SimpleDateFormat;
 import java.util.*;
 import java.io.*;
  
-public class HospitalProcess {
+public class libraryTest {
  
 static ArrayList<Patient> arl  = new ArrayList<Patient>();
 static String joindate;
@@ -82,7 +82,7 @@ String patientIllness;
 float amountForAppointment;
 String joindate;
  
-HospitalProcess hm = new HospitalProcess();
+libraryTest hm = new libraryTest();
  
 Patient() {}
  

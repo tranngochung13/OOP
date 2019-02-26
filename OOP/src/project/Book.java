@@ -44,23 +44,16 @@ public class Book {
         } while(check.equalsIgnoreCase("y"));
     }
     public void printData(){
+        System.out.println("ID\t\tBookName\tYear of publisher\tPrice\t\tStatus");
         for (int i = 0; i < ls.size(); i++) {
-            System.out.println("ID\t\tBookName\tYear of publisher\tPrice\t\tStatus");
-            System.out.println(ls.get(i)+"\t\t"+name.get(i)+"\t\t\t"+yearOfPublisher.get(i)+"\t\t"+price.get(i)+"\t"+status.get(i)+"\n");
-//            System.out.println("=>"+name.get(i));
-//            System.out.println("=>"+yearOfPublisher.get(i));
-//            System.out.println("=>"+price.get(i));
-//            System.out.println("=>"+status.get(i));
+            System.out.println(ls.get(i)+"\t\t"+name.get(i)+"\t\t\t"+yearOfPublisher.get(i)+"\t\t"+price.get(i)+"\t\t"+status.get(i));
         }
 	}
     public int findByID(int id){
         for (int i = 0; i < ls.size(); i++) {
             if (ls.get(i)==id){
-                System.out.println("tim thay gia tri phan tu "+ls.get(i));
-                System.out.println("=>"+name.get(i));
-                System.out.println("=>"+yearOfPublisher.get(i));
-                System.out.println("=>"+price.get(i));
-                System.out.println("=>"+status.get(i));
+                System.out.println("tim thay gia tri co id la: ");
+                System.out.println(ls.get(i)+", NameBook: "+name.get(i)+", Year of Publisher: "+yearOfPublisher.get(i)+", Price: "+price.get(i)+", Status: "+status.get(i));
                 return i;
             }
         } 
@@ -69,7 +62,7 @@ public class Book {
     public void deleteByID(int id){
         int pos = findByID(id);
         if (pos>=0){
-                System.out.println("Đã xóa gia tri phan tu "+ls.get(pos));
+                System.out.println("Đã xóa gia tri co id la "+ls.get(pos));
                 ls.remove(pos);
         }else{
                 System.out.println("not found");
