@@ -33,8 +33,11 @@ public class MainUser
 
         UserAccount login = new UserAccount(username, password);
 
-        if(login.checkPassword())
+        if(login.checkPassword()){
             System.out.println("You are logged in!");
+            Book b = new Book();
+            b.menu();
+        }
         else
             System.out.println("The username and password you entered are incorrect.");
     }
