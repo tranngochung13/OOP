@@ -83,7 +83,7 @@ public static void AddPerson(Person pr){
             
       
        System.out.println("\n\t\t******************************************************");
-       System.out.println("\t\t********** PLEASE ENTER ADD PERSON*******************");
+       System.out.println("\t\t********** PLEASE ENTER ADD PERSON *******************");
        System.out.println("\t\t******************************************************");
        
        System.out.println("Input Name");

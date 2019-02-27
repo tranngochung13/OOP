@@ -16,44 +16,47 @@ import java.util.Scanner;
 public class Book {
     Scanner sc = new Scanner(System.in);
     Scanner sc1 = new Scanner(System.in);
+    String name;
+    String year;
+    String price;
+    String status;
     ArrayList<Integer> ls = new ArrayList<>();
-    ArrayList<String> name = new ArrayList<>();
-    ArrayList<Author> author = new ArrayList<>();
-    ArrayList<Integer> yearOfPublisher = new ArrayList<>();
-    ArrayList<Float> price = new ArrayList<>();
-    ArrayList<String> status = new ArrayList<>();
-    ArrayList<Publisher> publisher = new ArrayList<>();
-    public void inputData(){
-        String check = ("y");
-        do {
+    ArrayList<Book> names = new ArrayList<>();
+    ArrayList<Author> authors = new ArrayList<>();
+    ArrayList<Integer> yearOfPublishers = new ArrayList<>();
+    ArrayList<Float> prices = new ArrayList<>();
+    ArrayList<String> statuss = new ArrayList<>();
+    ArrayList<Publisher> publishers = new ArrayList<>();
+    public void inputData(Book b){
+//        String check = ("y");
+//        do {
             System.out.print("input name: ");
-            name.add(sc1.nextLine());
+            b.name = sc.nextLine();
 //          System.out.print("input author: ");
 //          ls.add(sc.nextInt());
             System.out.print("input year of publisher: ");
-            yearOfPublisher.add(sc.nextInt());
+            b.year = sc.nextLine();
             System.out.print("input price: ");
-            price.add(sc.nextFloat());
+            b.price = sc.nextLine();
             System.out.print("input status: ");
-            status.add(sc1.nextLine());
+            b.status = sc.nextLine();
 //          System.out.print("input publisher: ");
 //          ls.add(sc.nextInt());
-            ls.add(price.size());
-            System.out.print("Input 'y' to continue: ");
-            check = sc.next();
-        } while(check.equalsIgnoreCase("y"));
+//            System.out.print("Input 'y' to continue: ");
+//            check = sc.next();
+//        } while(check.equalsIgnoreCase("y"));
     }
     public void printData(){
         System.out.println("ID\t\tBookName\tYear of publisher\tPrice\t\tStatus");
-        for (int i = 0; i < ls.size(); i++) {
-            System.out.println(ls.get(i)+"\t\t"+name.get(i)+"\t\t\t"+yearOfPublisher.get(i)+"\t\t"+price.get(i)+"\t\t"+status.get(i));
+        for (int i = 0; i < names.size(); i++) {
+            System.out.println(ls.get(i)+"\t\t"+names.get(i).name+"\t\t\t"+names.get(i).year+"\t\t"+names.get(i).price+"\t\t"+names.get(i).status);
         }
 	}
     public int findByID(int id){
         for (int i = 0; i < ls.size(); i++) {
             if (ls.get(i)==id){
                 System.out.println("tim thay gia tri co id la: ");
-                System.out.println(ls.get(i)+", NameBook: "+name.get(i)+", Year of Publisher: "+yearOfPublisher.get(i)+", Price: "+price.get(i)+", Status: "+status.get(i));
+                System.out.println(ls.get(i)+"\t\t"+names.get(i).name+"\t\t\t"+names.get(i).year+"\t\t"+names.get(i).price+"\t\t"+names.get(i).status);
                 return i;
             }
         } 
@@ -84,6 +87,7 @@ public class Book {
         deleteByID(idDel);
     }
     public void menu(){   
+        Book b = new Book();
         System.out.println("");
         System.out.println("1. Input book");
         System.out.println("2. Show book");
@@ -96,7 +100,9 @@ public class Book {
         System.out.println("");
         switch(choice){
         case 1: 
-            inputData(); 
+            inputData(b); 
+            names.add(b);
+            ls.add(names.size());
             menu();
         case 2: 
             printData(); 

@@ -5,12 +5,19 @@
         <group>
             <file>file:/C:/Users/hung.tran/Desktop/OOP/OOP/src/project/test.java</file>
             <file>file:/C:/Users/hung.tran/Desktop/OOP/OOP/src/project/UserAccount.java</file>
-            <file>file:/C:/Users/hung.tran/Desktop/OOP/OOP/src/project/Book.java</file>
+            <file>file:/C:/Users/hung.tran/Desktop/OOP/OOP/src/librarymanagement/Book.java</file>
+            <file>file:/C:/Users/hung.tran/Desktop/OOP/OOP/src/librarymanagement/Author.java</file>
             <file>file:/C:/Users/hung.tran/Desktop/OOP/OOP/src/project/Author.java</file>
-            <file>file:/C:/Users/hung.tran/Desktop/OOP/OOP/src/project/Publisher.java</file>
-            <file>file:/C:/Users/hung.tran/Desktop/OOP/OOP/src/project/person.java</file>
+            <file>file:/C:/Users/hung.tran/Desktop/OOP/OOP/src/librarymanagement/Person.java</file>
             <file>file:/C:/Users/hung.tran/Desktop/OOP/OOP/src/project/Main.java</file>
             <file>file:/C:/Users/hung.tran/Desktop/OOP/OOP/src/project/MainUser.java</file>
+            <file>file:/C:/Users/hung.tran/Desktop/OOP/OOP/src/librarymanagement/Publisher.java</file>
+            <file>file:/C:/Users/hung.tran/Desktop/OOP/OOP/src/oop/UserList.java</file>
+            <file>file:/C:/Users/hung.tran/Desktop/OOP/OOP/src/oop/LoginCntl.java</file>
+            <file>file:/C:/Users/hung.tran/Desktop/OOP/OOP/src/project/Book.java</file>
+            <file>file:/C:/Users/hung.tran/Desktop/OOP/OOP/src/project/Publisher.java</file>
+            <file>file:/C:/Users/hung.tran/Desktop/OOP/OOP/src/librarymanagement/main.java</file>
+            <file>file:/C:/Users/hung.tran/Desktop/OOP/OOP/src/project/person.java</file>
         </group>
     </open-files>
 </project-private>
