@@ -14,36 +14,31 @@ import java.util.Scanner;
  * @author Thiet Bi So
  */
 public class Book {
-    Scanner sc = new Scanner(System.in);
-    Scanner sc1 = new Scanner(System.in);
+    Scanner scNumber = new Scanner(System.in);
+    Scanner scWord = new Scanner(System.in);
     String name;
-    String year;
-    String price;
+    int year;
+    int price;
     String status;
     ArrayList<Integer> ls = new ArrayList<>();
     ArrayList<Book> names = new ArrayList<>();
-    ArrayList<Author> authors = new ArrayList<>();
-    ArrayList<Integer> yearOfPublishers = new ArrayList<>();
-    ArrayList<Float> prices = new ArrayList<>();
-    ArrayList<String> statuss = new ArrayList<>();
-    ArrayList<Publisher> publishers = new ArrayList<>();
     public void inputData(Book b){
 //        String check = ("y");
 //        do {
             System.out.print("input name: ");
-            b.name = sc.nextLine();
+            b.name = scWord.nextLine();
 //          System.out.print("input author: ");
-//          ls.add(sc.nextInt());
+//          ls.add(scNumber.nextInt());
             System.out.print("input year of publisher: ");
-            b.year = sc.nextLine();
+            b.year = scNumber.nextInt();
             System.out.print("input price: ");
-            b.price = sc.nextLine();
+            b.price = scNumber.nextInt();
             System.out.print("input status: ");
-            b.status = sc.nextLine();
+            b.status = scWord.nextLine();
 //          System.out.print("input publisher: ");
-//          ls.add(sc.nextInt());
+//          ls.add(scNumber.nextInt());
 //            System.out.print("Input 'y' to continue: ");
-//            check = sc.next();
+//            check = scNumber.next();
 //        } while(check.equalsIgnoreCase("y"));
     }
     public void printData(){
@@ -73,8 +68,8 @@ public class Book {
     }
     public void find(){
         System.out.println("input id find");
-        int idFind = sc.nextInt();
-        findByID(idFind); 
+        int idFind = scNumber.nextInt();
+        //findByID(idFind); 
         int find = findByID(idFind); 
         if (find<0){
             System.out.println("not found");
@@ -83,40 +78,52 @@ public class Book {
     }
     public void delete(){
         System.out.println("input id delete");
-        int idDel = sc.nextInt();
+        int idDel = scNumber.nextInt();
         deleteByID(idDel);
     }
     public void menu(){   
         Book b = new Book();
+        boolean checkInput = true;
         System.out.println("");
         System.out.println("1. Input book");
         System.out.println("2. Show book");
         System.out.println("3. Find");
         System.out.println("4. delete");
-        Scanner sc = new Scanner(System.in);
         int choice;
-        System.out.print("Please choice: ");
-        choice = sc.nextInt();
-        System.out.println("");
-        switch(choice){
-        case 1: 
-            inputData(b); 
-            names.add(b);
-            ls.add(names.size());
-            menu();
-        case 2: 
-            printData(); 
-            menu();
-        case 3: 
-            find();
-            menu();
-        case 4: 
-            delete();
-            menu();
-        default: 
-            System.out.print("Please choice from 1 - 4: ");
-            choice = sc.nextInt();
-        }		
+        do {
+            try {
+                do{
+                    System.out.print("Please choice: ");
+                    choice = scNumber.nextInt(); 
+                    checkInput = true;
+                    switch(choice){
+                        case 1: 
+                            inputData(b); 
+                            names.add(b);
+                            ls.add(names.size());
+                            menu();
+                            break;
+                        case 2: 
+                            printData(); 
+                            menu();
+                            break;
+                        case 3: 
+                            find();
+                            menu();
+                            break;
+                        case 4: 
+                            delete();
+                            menu();
+                            break;
+                    }
+                }while(choice<1 || choice>3);
+                System.out.print("Please choice from 1 - 3: ");
+            } catch (Exception e) {
+                checkInput = false;
+                scNumber.nextLine();
+            }
+            
+        } while (!checkInput);		
     }
     public static void main(String[] args) {
         test t = new test();

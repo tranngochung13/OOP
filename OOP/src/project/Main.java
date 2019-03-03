@@ -20,10 +20,11 @@ public class Main {
         System.out.println("----------------------------------");
         Scanner sc = new Scanner(System.in);
         int choice;
+        do{
         System.out.print("Please choice: ");
         choice = sc.nextInt();
         System.out.println("");
-        switch(choice){
+            switch(choice){
         case 1: 
             System.out.print("---------------Book---------------");
             Book b = new Book();
@@ -42,10 +43,13 @@ public class Main {
             p.getName();
             p.display();
             menu();
-        default: 
-            System.out.print("Please choice from 1 - 3: ");
-            choice = sc.nextInt();
+//        default: 
+//            System.out.print("Please choice from 1 - 3: ");
+//            choice = sc.nextInt();
         }
+        }while(choice<1 || choice>3);
+        System.out.print("Please choice from 1 - 3: ");
+        
     }
     public static void main(String[] args) {
         Main m = new Main();
