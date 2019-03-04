@@ -13,59 +13,71 @@ import java.util.Scanner;
  *
  * @author Thiet Bi So
  */
-public class Book {
+public class Book extends Author{
     Scanner scNumber = new Scanner(System.in);
     Scanner scWord = new Scanner(System.in);
+    ArrayList<Integer> id = new ArrayList<>();
+    ArrayList<Book> names = new ArrayList<>();
     String name;
     int year;
     int price;
     String status;
-    ArrayList<Integer> ls = new ArrayList<>();
-    ArrayList<Book> names = new ArrayList<>();
-    public void inputData(Book b){
-//        String check = ("y");
-//        do {
-            System.out.print("input name: ");
-            b.name = scWord.nextLine();
-//          System.out.print("input author: ");
-//          ls.add(scNumber.nextInt());
-            System.out.print("input year of publisher: ");
-            b.year = scNumber.nextInt();
-            System.out.print("input price: ");
-            b.price = scNumber.nextInt();
-            System.out.print("input status: ");
-            b.status = scWord.nextLine();
-//          System.out.print("input publisher: ");
-//          ls.add(scNumber.nextInt());
-//            System.out.print("Input 'y' to continue: ");
-//            check = scNumber.next();
-//        } while(check.equalsIgnoreCase("y"));
+    Author author;
+    
+    public static boolean checkNumber(String str) {
+        if (str == null || str.isEmpty()) {
+            return false;
+        }
+        int sz = str.length();
+        for (int i = 0; i < sz; i++) {
+            if (!Character.isDigit(str.charAt(i)) ) {
+                return false;
+            }
+        }
+        return true;
     }
+    
+    public void inputData(Book b){
+        System.out.print("input name: ");
+        b.name = scWord.nextLine();
+        System.out.print("input author: ");
+        String au = scWord.nextLine();
+        for (int i = 0; i < 1000; i++) {
+            if (names.get(i).author.name == au) {
+                b.author.name = au;
+                break;
+            }
+        }
+        System.out.print("input year of publisher: ");
+        b.year = scNumber.nextInt();
+        System.out.print("input price: ");
+        b.price = scNumber.nextInt();
+        System.out.print("input status: ");
+        b.status = scWord.nextLine();
+//      System.out.print("input publisher: ");
+//      ls.add(scNumber.nextInt());
+//      System.out.print("Input 'y' to continue: ");
+//      check = scNumber.next();
+    }
+    
     public void printData(){
         System.out.println("ID\t\tBookName\tYear of publisher\tPrice\t\tStatus");
         for (int i = 0; i < names.size(); i++) {
-            System.out.println(ls.get(i)+"\t\t"+names.get(i).name+"\t\t\t"+names.get(i).year+"\t\t"+names.get(i).price+"\t\t"+names.get(i).status);
+            System.out.println(id.get(i)+"\t\t"+names.get(i).name+"\t\t\t"+names.get(i).year+"\t\t"+names.get(i).price+"\t\t"+names.get(i).status+names.get(i).author.name);
         }
-	}
-    public int findByID(int id){
-        for (int i = 0; i < ls.size(); i++) {
-            if (ls.get(i)==id){
+    }
+    
+    public int findByID(int idFind){
+        for (int i = 0; i < id.size(); i++) {
+            if (id.get(i)==idFind){
                 System.out.println("tim thay gia tri co id la: ");
-                System.out.println(ls.get(i)+"\t\t"+names.get(i).name+"\t\t\t"+names.get(i).year+"\t\t"+names.get(i).price+"\t\t"+names.get(i).status);
+                System.out.println(id.get(i)+"\t\t"+names.get(i).name+"\t\t\t"+names.get(i).year+"\t\t"+names.get(i).price+"\t\t"+names.get(i).status);
                 return i;
             }
         } 
         return -1;
     }
-    public void deleteByID(int id){
-        int pos = findByID(id);
-        if (pos>=0){
-                System.out.println("Đã xóa gia tri co id la "+ls.get(pos));
-                ls.remove(pos);
-        }else{
-                System.out.println("not found");
-        }
-    }
+    
     public void find(){
         System.out.println("input id find");
         int idFind = scNumber.nextInt();
@@ -76,20 +88,41 @@ public class Book {
         }else
             System.out.println("found pos "+find);
     }
-    public void delete(){
-        System.out.println("input id delete");
-        int idDel = scNumber.nextInt();
-        deleteByID(idDel);
+    
+    public void deleteByID(int idDel){
+        int pos = findByID(idDel);
+        if (pos>=0){
+                System.out.println("Đã xóa gia tri co id la "+id.get(pos));
+                id.remove(pos);
+        }else{
+                System.out.println("not found");
+        }
     }
+    
+    public void delete(){
+        int idDel;
+        boolean checkInput = true;
+        do {
+            try {
+                System.out.println("input id delete");
+                idDel = scNumber.nextInt();
+                deleteByID(idDel);
+            } catch (Exception e) {
+                checkInput = false;
+                scNumber.nextLine();
+            }
+        } while (!checkInput);
+    }
+    
     public void menu(){   
         Book b = new Book();
-        boolean checkInput = true;
         System.out.println("");
         System.out.println("1. Input book");
         System.out.println("2. Show book");
         System.out.println("3. Find");
         System.out.println("4. delete");
         int choice;
+        boolean checkInput = true;
         do {
             try {
                 do{
@@ -100,8 +133,7 @@ public class Book {
                         case 1: 
                             inputData(b); 
                             names.add(b);
-                            ls.add(names.size());
-                            menu();
+                            id.add(names.size());
                             break;
                         case 2: 
                             printData(); 
@@ -117,12 +149,10 @@ public class Book {
                             break;
                     }
                 }while(choice<1 || choice>3);
-                System.out.print("Please choice from 1 - 3: ");
             } catch (Exception e) {
                 checkInput = false;
                 scNumber.nextLine();
             }
-            
         } while (!checkInput);		
     }
     public static void main(String[] args) {

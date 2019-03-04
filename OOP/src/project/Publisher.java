@@ -13,55 +13,56 @@ import java.util.Scanner;
  * @author Thiet Bi So
  */
 class Publisher {
-    Scanner sc = new Scanner(System.in);
-    Scanner sc1 = new Scanner(System.in);
-    Scanner sc2 = new Scanner(System.in);
-    Scanner sc3 = new Scanner(System.in);
+    Scanner scNumber = new Scanner(System.in);
+    Scanner scWord = new Scanner(System.in);
     ArrayList<Integer> id = new ArrayList<>();
-    ArrayList<String> name = new ArrayList<>();
-    ArrayList<Integer> phone = new ArrayList<>();
-    ArrayList<String> address = new ArrayList<>();
+    ArrayList<Publisher> names = new ArrayList<>();
+    public String name;
+    public int phone;
+    public String address;
     public void setName(String names){
-        name.add(sc.nextLine());
+        
     }
-    public String getName(){
-        for (int i = 0; i < name.size(); i++) {
-            return name.get(i);
+    public Publisher getName(){
+        for (int i = 0; i < names.size(); i++) {
+            return names.get(i);
         }
         return null;
     }
     public void display(){
-        for (int i = 0; i < name.size(); i++) {
-            System.out.println(name.get(i));
+        for (int i = 0; i < names.size(); i++) {
+            System.out.println(names.get(i));
         }
     }
     
     public void inputInfo(){
+        Publisher p = new Publisher();
         String check = ("y");
         do {
             System.out.print("Name: ");
-            name.add(sc.nextLine());
+            p.name = scWord.nextLine();
             System.out.print("Phone: ");
-            phone.add(sc1.nextInt());
+            p.phone = scNumber.nextInt();
             System.out.print("Address: ");
-            address.add(sc2.nextLine());
-            id.add(name.size());
+            p.address = scWord.nextLine();
+            names.add(p);
+            id.add(names.size());
             System.out.print("Input 'y' to continue: ");
-            check = sc3.next();
+            check = scWord.next();
         } while(check.equalsIgnoreCase("y"));
     }
     
     public void printInfo(){
         System.out.println("ID\t\tAuthorName\t\tPhone\t\tAddress");
         for (int i = 0; i < id.size(); i++) {
-            System.out.println(id.get(i)+"\t\t"+name.get(i)+"\t\t\t"+phone.get(i)+"\t"+address.get(i));
+            System.out.println(id.get(i)+"\t\t"+names.get(i).name+"\t\t\t"+names.get(i).phone+"\t"+names.get(i).address);
         }
     }
     public int findByID(int ID){
         for (int i = 0; i < id.size(); i++) {
             if (id.get(i)==ID){
                 System.out.print("tim thay gia tri co id la: ");
-                System.out.print(id.get(i)+", NamePublisher: "+name.get(i)+", Phone: "+phone.get(i)+", Address: "+address.get(i)+"\n");
+                System.out.print(id.get(i)+", NamePublisher: "+names.get(i).name+", Phone: "+names.get(i).phone+", Address: "+names.get(i).address+"\n");
                 return i;
             }
         } 
@@ -78,7 +79,7 @@ class Publisher {
     }
     public void find(){
         System.out.println("input id find");
-        int idFind = sc.nextInt();
+        int idFind = scNumber.nextInt();
         findByID(idFind); 
         int find = findByID(idFind); 
         if (find<0){
@@ -88,7 +89,7 @@ class Publisher {
     }
     public void delete(){
         System.out.println("input id delete");
-        int idDel = sc.nextInt();
+        int idDel = scNumber.nextInt();
         deleteByID(idDel);
     }
     public void menu(){   

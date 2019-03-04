@@ -5,12 +5,15 @@
  */
 package project;
 
+import java.util.Scanner;
+import oop.library.input;
+
 /**
  *
  * @author Administrator
  */
 public class onlyInputNumber {
-
+Scanner scNumber = new Scanner(System.in);
  public static boolean checkNumber(String str) {
             if (str == null || str.isEmpty()) {
                 return false;
@@ -23,8 +26,15 @@ public class onlyInputNumber {
             }
             return true;
  }
-    public static void main(String[] args) {
-        boolean check = checkNumber("12");
+ void input(){
+     String a;
+        System.out.println("Nhập a: ");
+        a = scNumber.nextLine();
+        boolean check = checkNumber(a);
         System.out.println(check);
+ }
+    public static void main(String[] args) {
+        onlyInputNumber o = new onlyInputNumber();
+        o.input();
     }
 }

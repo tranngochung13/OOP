@@ -12,6 +12,12 @@ import java.util.Scanner;
  * @author hung.tran
  */
 public class Main {
+    Book b = new Book();
+    Author a = new Author();
+    Publisher p = new Publisher();
+    int aa;
+    String bb;
+    
     public void menu(){
         System.out.println("----------------------------------");
         System.out.println("-         1. Book                -");
@@ -27,25 +33,16 @@ public class Main {
             switch(choice){
         case 1: 
             System.out.print("---------------Book---------------");
-            Book b = new Book();
             b.menu();
             menu();
         case 2: 
             System.out.print("--------------Author--------------");
-            Author a = new Author();
-            a.inputInfo();
-            a.printInfo();
+            a.menu();
             menu();
         case 3: 
             System.out.print("------------Publisher-------------");
-            Publisher p = new Publisher();
-            p.setName("HUng");
-            p.getName();
-            p.display();
+            p.menu();
             menu();
-//        default: 
-//            System.out.print("Please choice from 1 - 3: ");
-//            choice = sc.nextInt();
         }
         }while(choice<1 || choice>3);
         System.out.print("Please choice from 1 - 3: ");

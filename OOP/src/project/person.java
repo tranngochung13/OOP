@@ -9,19 +9,14 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public abstract class person {
-    Scanner sc = new Scanner(System.in);
-    Scanner sc1 = new Scanner(System.in);
-    Scanner sc2 = new Scanner(System.in);
-    Scanner sc3 = new Scanner(System.in);
-    Scanner sc4 = new Scanner(System.in);
-    Scanner sc5 = new Scanner(System.in);
+    Scanner scNumber = new Scanner(System.in);
+    Scanner scWord = new Scanner(System.in);
     ArrayList<Integer> id = new ArrayList<>();
-    ArrayList<String> name = new ArrayList<>();
-    ArrayList<String> gender = new ArrayList<>();
-    ArrayList<String> email = new ArrayList<>();
-    ArrayList<Integer> phone = new ArrayList<>();
-    ArrayList<String> address = new ArrayList<>();
+    protected String name;
+    protected String gender;
+    protected String email;
+    protected int phone;
+    protected String address;
     
-    public abstract void inputInfo();
     public abstract void printInfo();
 }
