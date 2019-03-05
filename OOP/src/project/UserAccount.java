@@ -10,7 +10,7 @@ public class UserAccount
 
     private String username;
     private String password;
-    private String[][] accounts = {{"anthony", "supernova"},{"steve", "java1"}};
+    private String[][] accounts = {{"user1", "password1"},{"user2", "password2"}};
     
     public UserAccount(String username, String password) {
     this.username = username;
@@ -19,11 +19,13 @@ public class UserAccount
 
     public boolean checkPassword()
     {
-
-        if((username.equals(accounts[0][0])) && (password.equals(accounts[0][1])))
+        for (int i = 0; i < 10; i++) {
+        if((username.equals(accounts[i][0])) && (password.equals(accounts[i][1])))
             return true;
         else
             return false;
+        }
+        return true;
     }
 
     public void deactivateAccount()
